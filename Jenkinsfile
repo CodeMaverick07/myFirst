@@ -13,13 +13,13 @@ pipeline {
     stages {
         stage('Clone Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/archis04/myfirst.git'
+                git branch: 'main', url: 'https://github.com/codemaverick07/myfirst.git'
             }
         }
 
         stage('Build WAR') {
             steps {
-                bat 'mvn clean package'
+                sh 'mvn clean package'
             }
         }
 
