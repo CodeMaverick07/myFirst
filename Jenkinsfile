@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         TOMCAT_URL = 'http://localhost:9090/manager/text'
-        TOMCAT_CREDENTIALS = 'tomcat-credentials'
+        TOMCAT_CREDENTIALS = 'tomcat-cred'
     }
 
     stages {
