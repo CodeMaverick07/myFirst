@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven' // Make sure this name matches the Maven version configured in Jenkins
+        maven 'Maven'
     }
 
     environment {
@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Clone Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/codemaverick07/myfirst.git'
+                git branch: 'main', url: 'https://github.com/CodeMaverick07/myfirst.git'
             }
         }
 
@@ -24,10 +24,16 @@ pipeline {
         }
 
         stage('Deploy to Tomcat') {
-    steps {
-        deploy adapters: [tomcat9(credentialsId: "${TOMCAT_CREDENTIALS}", url: "${TOMCAT_URL}")], contextPath: 'myfirst', war: 'target/myfirst.war'
-    }
-}
-
+            steps {
+                deploy adapters: [
+                    tomcat9(
+                        credentialsId: "${TOMCAT_CREDENTIALS}",
+                        url: "${TOMCAT_URL}"
+                    )
+                ],
+                contextPath: 'myfirst',
+                war: 'target/myfirst.war'
+            }
+        }
     }
 }
